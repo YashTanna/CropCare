@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import {ImageUpload} from "../components/ImageUpload"
 import Chatbot from "../components/Chatbot"
+import { ImageUpload } from "../components/ImageUpload"
 
 const Predict = () => {
   const [uploadedImage, setUploadedImage] = useState(null)
@@ -22,7 +22,7 @@ const Predict = () => {
       const formData = new FormData()
       formData.append("file", uploadedImage)
 
-      const response = await fetch("http://localhost:8000/predict", {
+      const response = await fetch("https://cropcare-backend-snmv.onrender.com/predict", {
         method: "POST",
         body: formData,
       })
