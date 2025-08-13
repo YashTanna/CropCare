@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import "../styles/globals.css"; // adjust path if your global CSS is elsewhere
+import "../../styles/global.css"; // adjust path if your global CSS is elsewhere
 
 function MyApp({ Component, pageProps }) {
     return (
