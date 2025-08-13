@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Chatbot from "../components/Chatbot"
-import { ImageUpload } from "../components/ImageUpload"
+import ImageUpload  from "../components/ImageUpload"
 
 const Predict = () => {
   const [uploadedImage, setUploadedImage] = useState(null)
