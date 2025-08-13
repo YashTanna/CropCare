@@ -1,11 +1,16 @@
-import { BrowserRouter } from "react-router-dom";
-import "../../styles/globals.css"; // adjust path if your global CSS is elsewhere
+import dynamic from "next/dynamic";
+import "../styles/globals.css";
+
+const ClientOnlyRouter = dynamic(
+    () => import("./ClientRouterWrapper"),
+    { ssr: false }
+);
 
 function MyApp({ Component, pageProps }) {
     return (
-        <BrowserRouter>
+        <ClientOnlyRouter>
             <Component {...pageProps} />
-        </BrowserRouter>
+        </ClientOnlyRouter>
     );
 }
 
