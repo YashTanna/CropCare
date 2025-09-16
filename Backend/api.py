@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import numpy as np
 from PIL import Image
 import io
@@ -22,8 +23,24 @@ app.add_middleware(
 MODEL_PATH = "models/best_model.h5"
 model = load_model(MODEL_PATH)
 
-# List of class names
-CLASS_NAMES = ["Apple___Scab", "Apple___Black_rot", "Apple___Cedar_apple_rust", "Apple___healthy"]
+# Correct class names (15 classes from your dataset)
+CLASS_NAMES = [
+    "Pepper__bell___Bacterial_spot",
+    "Pepper__bell___healthy",
+    "Potato___Early_blight",
+    "Potato___healthy",
+    "Potato___Late_blight",
+    "Tomato___Target_Spot",
+    "Tomato___Tomato_mosaic_virus",
+    "Tomato___Tomato_YellowLeaf_Curl_Virus",
+    "Tomato___Bacterial_spot",
+    "Tomato___Early_blight",
+    "Tomato___healthy",
+    "Tomato___Late_blight",
+    "Tomato___Leaf_Mold",
+    "Tomato___Septoria_leaf_spot",
+    "Tomato___Spider_mites_Two_spotted_spider_mite"
+]
 
 # Preprocessing function
 def preprocess_image(img_bytes):
@@ -31,7 +48,7 @@ def preprocess_image(img_bytes):
     img = img.resize((224, 224))
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
-    img_array = img_array / 255.0
+    img_array = preprocess_input(img_array)  # MobileNetV2 preprocessing
     return img_array
 
 @app.get("/")
