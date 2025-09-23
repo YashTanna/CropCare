@@ -2,8 +2,8 @@ services:
   - type: web
     name: plant-disease-backend
     env: python
-    plan: free   # or starter/standard if you upgrade
+    plan: free
     buildCommand: |
-      pip install --upgrade pip
+      pip install --upgrade pip setuptools wheel
       pip install -r requirements.txt
     startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
