@@ -12,7 +12,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     build-essential gcc g++ libhdf5-dev libblas-dev liblapack-dev \
  && python -m pip install --upgrade pip setuptools wheel \
- && && pip install --prefer-binary -r requirements.txt \
+ && pip install --prefer-binary -r requirements.txt \
  && apt-get remove -y build-essential gcc g++ \
  && apt-get autoremove -y \
  && rm -rf /var/lib/apt/lists/*
