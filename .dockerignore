@@ -1,0 +1,10 @@
+# root .dockerignore
+Frontend/node_modules
+Backend/__pycache__
+Backend/*.pyc
+*.pyc
+.env
+.git
+.gitignore
+venv
+node_modules
