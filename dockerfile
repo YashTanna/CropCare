@@ -24,4 +24,6 @@ ENV PORT=8000
 EXPOSE 8000
 
 # Use api:app as your FastAPI entrypoint (you said file is api.py)
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+# replace whatever CMD you currently have with this
+CMD ["sh", "-c", "uvicorn api:app --host 0.0.0.0 --port ${PORT:-8000}"]
+
